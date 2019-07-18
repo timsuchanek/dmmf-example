@@ -1,4 +1,5 @@
 const { getDMMF } = require('@prisma/photon')
+const { LiftEngine } = require('@prisma/lift')
 
 const datamodel = `datasource db {
   provider = "sqlite"
@@ -8,6 +9,8 @@ const datamodel = `datasource db {
 
 generator photon {
   provider = "photonjs"
+  platforms = ["native", "libssl-1.1"]
+  activePlatform = "libssl-1.1"
 }
 
 model Product {
@@ -25,7 +28,11 @@ model Product2 {
 
 async function main() {
   const dmmf = await getDMMF({ datamodel })
-  console.log(Object.keys(dmmf))
+  const engine = new LiftEngine({
+    projectDir: '.',
+  })
+  const config = await engine.getConfig({ datamodel })
+  console.dir(config, { depth: null })
 }
 
 main()
