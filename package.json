@@ -1,0 +1,13 @@
+{
+  "name": "getdmmf",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/photon": "^0.0.167"
+  },
+  "devDependencies": {
+    "@prisma/lift": "^0.0.145",
+    "typescript": "^3.5.3"
+  }
+}
